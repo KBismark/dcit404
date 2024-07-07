@@ -12,7 +12,7 @@ async function manipulateDB({command, table, data}){
   try {
     connection = await oracledb.getConnection(connectionConfig);
     console.log("Successfully connected to Oracle Database");
-
+    
     let columns = Object.keys(data);
     let values,i;
     let sql, result;
@@ -21,8 +21,9 @@ async function manipulateDB({command, table, data}){
     switch (command) {
         case 'insert':
             values = Object.values(data).join(', ');
-            // Insert data
+            // Insert row
             sql = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${values});`;
+            console.log(sql);
             result = await connection.execute(sql);
             console.log(result);
             connection.commit();
@@ -34,8 +35,9 @@ async function manipulateDB({command, table, data}){
                     values.push(`(${columns[i]}=${data[columns[i]]})`)
                 }
             }
-            // Insert data
+            // Delete row
             sql = `DELETE FROM ${table} WHERE ${values.join(' AND ')};`;
+            console.log(sql);
             result = await connection.execute(sql);
             console.log(result);
             connection.commit();
@@ -47,13 +49,23 @@ async function manipulateDB({command, table, data}){
                     values.push(`${columns[i]}=${data[columns[i]]}`)
                 }
             }
-            // Insert data
+            // Update row
             sql = `UPDATE ${table} SET ${values.join(', ')} WHERE ${values.join(' OR ')};`;
+            console.log(sql);
             result = await connection.execute(sql);
             console.log(result);
             connection.commit();
             break;
+        case 'retrieve':
+            sql = `SELECT * FROM course;`;
+            result = [
+                await connection.execute(`SELECT * FROM course;`), 
+                await connection.execute(`SELECT * FROM delegate;`), 
+            ];
+            console.log(result);
+            break;
         default:
+            throw new Error('Error');
             break;
     }
     
