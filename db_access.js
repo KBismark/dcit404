@@ -1,4 +1,6 @@
 const oracledb = require('oracledb');
+const fs = require('fs/promises');
+const path = require('path');
 
 const USER = 'dcit404';
 const PASSWORD = '1234';
@@ -57,7 +59,6 @@ async function manipulateDB({command, table, data}){
             connection.commit();
             break;
         case 'retrieve':
-            sql = `SELECT * FROM course;`;
             result = [
                 await connection.execute(`SELECT * FROM course;`), 
                 await connection.execute(`SELECT * FROM delegate;`), 
@@ -72,16 +73,22 @@ async function manipulateDB({command, table, data}){
     console.log(sql);
 
   }catch (err){
-        throw err;
+    console.log(err);
+    return await fallBack({command, table, data})
+        // throw err;
   } finally {
     if (connection){
         try {
             await connection.close();
         } catch (err) {
-            throw err;
+            console.log(err);
+            return await fallBack({command, table, data})
+            // throw err;
         }
     }else{
-        throw new Error('Error!')
+        console.log(new Error('Error!'));
+        return await fallBack({command, table, data})
+        // throw new Error('Error!')
     }
   }
     
@@ -91,7 +98,95 @@ async function manipulateDB({command, table, data}){
 
 
 
+const sample_db_path = path.join(__dirname, '/sample_table.json');
+async function fallBack({command, table, data}){
+    console.log('Falling back on file database....');
+  try {
+    
+    let columns = Object.keys(data);
+    let values,i;
+    let result;
+    let table_data, table_column, table_row;
+    let found = false;
 
+
+    switch (command) {
+        case 'insert':
+            result = await fs.readFile(sample_db_path,'utf8');
+            result = JSON.parse(result);
+            result[table].push(data);
+            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2))
+            break;
+        case 'delete':
+            result = await fs.readFile(sample_db_path,'utf8');
+            result = JSON.parse(result);
+            table_data = result[table];
+            
+            for(i=0; i<table_data.length; i++){
+                table_row = table_data[i];
+                found = true;
+                // Delete if only all queries were matched
+                for(table_column in data){
+                    if(table_row[table_column]!==data[table_column]){
+                        found = false;
+                        break;
+                    }
+                }
+                
+                if(!found){
+                    result[table] = table_data = [...table_data.slice(0, i),...table_data.slice(i+1)]
+                    break;
+                }
+            }
+            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
+            break;
+        case 'update':
+            values = {};
+            for(i=0; i<columns.length; i++){
+                if(data[columns[i]]){
+                    values[columns[i]] = data[columns[i]];
+                }
+            }
+
+            result = await fs.readFile(sample_db_path,'utf8');
+            result = JSON.parse(result);
+            table_data = result[table];
+            
+            for(i=0; i<table_data.length; i++){
+                table_row = table_data[i];
+                 // Update if at least a query matched
+                for(table_column in table_row){
+                    if(table_row[table_column]===values[table_column]){
+                        found = true;
+                        break;
+                    }
+                }
+               
+                if(found){
+                    result[table] = table_data = [...table_data.slice(0, i), {...table_row, ...values} ,...table_data.slice(i+1)]
+                    break;
+                }
+            }
+            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
+            break;
+        case 'retrieve':
+            result = await fs.readFile(sample_db_path,'utf8');
+            result = JSON.parse(result);
+            console.log(result);
+            return result;
+        default:
+            throw new Error('Error');
+            break;
+    }
+
+
+  }catch (err){
+        throw err;
+  } 
+    
+
+
+}
 
 
 
