@@ -4,79 +4,337 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button{
+            cursor: pointer;
+        }
+        #nav-button-container button{
+            background-color: #fafafa;
+            color: rgb(13, 65, 235);
+        }
+        #nav-button-container button:hover{
+            background-color: rgba(191, 214, 224, 0.384);
+            color: rgb(13, 65, 235);
+        }
+    </style>
 </head>
-<body style="font-size: 17px;">
-    <div style="display: flex;justify-content: center;">
-        <div style="width: 700px;display: flex;justify-content: space-around;border-bottom: 1px solid #eee;padding-bottom: 15px;padding-top: 10px;">
-            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(13, 65, 235);color: #fff;border: none;outline: none;padding: 7px 20px;border-radius: 9999px;text-align: center;">
+<body style="font-size: 17px;background-color: rgba(230, 233, 240, 0.2);margin: 0px;position: relative;">
+    <div style="display: flex;justify-content: center;background-color: #ffffff;position: sticky;top: 0;">
+        <div id="nav-button-container" style="width: 700px;display: flex;justify-content: space-around;border-bottom: 1px solid #eee;padding-bottom: 15px;padding-top: 10px;">
+            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(13, 65, 235);color: #fff;border: none;outline: none;padding: 7px 25px;border-radius: 9999px;text-align: center;">
                 Insert
             </button>
-            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(240 240 240);color: rgb(13, 65, 235);border: none;outline: none;padding: 7px 20px;border-radius: 9999px;text-align: center;">
+            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;border: none;outline: none;padding: 7px 25px;border-radius: 9999px;text-align: center;">
                 Update
             </button>
-            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(240 240 240);color: rgb(13, 65, 235);border: none;outline: none;padding: 7px 20px;border-radius: 9999px;text-align: center;">
-                Retrieve
-            </button>
-            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(240 240 240);color: rgb(13, 65, 235);border: none;outline: none;padding: 7px 20px;border-radius: 9999px;text-align: center;">
+            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;border: none;outline: none;padding: 7px 25px;border-radius: 9999px;text-align: center;">
                 Delete
             </button>
-            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(240 240 240);color: rgb(13, 65, 235);border: none;outline: none;padding: 7px 20px;border-radius: 9999px;text-align: center;">
+            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;border: none;outline: none;padding: 7px 25px;border-radius: 9999px;text-align: center;">
+                Retrieve
+            </button>
+            <button style="font-size: 17px;font-weight:600; text-transform:uppercase;border: none;outline: none;padding: 7px 25px;border-radius: 9999px;text-align: center;">
                 Backup
             </button>
         </div>
     </div>
-    <div style="margin-top: 20px;display: flex;justify-content: center;">
-        <div style="width: 700px;display: flex;justify-conten: center;">
-            <select style="width: 200px;padding: 8px 10px;">
-                <option style="width: 200px;padding: 8px 10px;" selected value="Delegate">Delegate</option>
-                <option style="width: 200px;padding: 8px 10px;" value="Course">Course</option>
-            </select>
+    <div id="first-set" style="">
+        <div style="margin-top: 20px;display: flex;justify-content: center;">
+            <div style="width: 700px;display: flex;justify-conten: center;">
+                <select id="select" style="width: 200px;padding: 8px 10px;font-size: 19px;border-radius: 5px;">
+                    <option style="width: 200px;padding: 8px 10px;" selected value="Delegate">Delegate</option>
+                    <option style="width: 200px;padding: 8px 10px;" value="Course">Course</option>
+                </select>
+            </div>
+        </div>
+    
+        <div id="delegate" style="margin-top: 20px;display: flex;justify-content: center;flex-direction: column;align-items: center;">
+            <h1>Delegate Info</h1>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    First name: 
+                </div>
+                <input name="delegateFName" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Last name: 
+                </div>
+                <input name="delegateLName" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Title: 
+                </div>
+                <input name="delegateTitle" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Delegate No.: 
+                </div>
+                <input name="delegateNo" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Email Address: 
+                </div>
+                <input name="attEmailAddress" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Telephone Number: 
+                </div>
+                <input name="attTelNo" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    State: 
+                </div>
+                <input name="delegateState" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    City: 
+                </div>
+                <input name="delegateCity" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Street Address: 
+                </div>
+                <input name="delegateStreet" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+
+            <h1>Client or Company Info</h1>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Client Number: 
+                </div>
+                <input name="clientNo" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+
+            <h1>Administrator use only</h1>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Employee name: 
+                </div>
+                <input name="employeeName" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+        </div>
+        <div id="course" style="margin-top: 20px;display: none;justify-content: center;flex-direction: column;align-items: center;">
+            <h1>Course Info</h1>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Course name: 
+                </div>
+                <input name="courseName" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Start Date: 
+                </div>
+                <input name="startDate" type="date" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Start Time 
+                </div>
+                <input name="startTime" type="time" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    End Date: 
+                </div>
+                <input name="endDate" type="date" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    End Time 
+                </div>
+                <input name="endTime" type="time" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Course No.: 
+                </div>
+                <input name="courseNo" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Course Description: 
+                </div>
+                <textarea name="courseDescription" id="" style="resize: none;border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;"></textarea>
+            </div>
+            
+            <h1>Administrator use only</h1>
+            <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
+                <div style="font-weight: 600;margin-right: 40px;width: 120px;">
+                    Employee name: 
+                </div>
+                <input name="employeeName" type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;border: 1px solid #d4d4d4;" />
+            </div>
+        </div>
+        <div style="margin-top: 40px;margin-bottom: 10%;display: flex;justify-content: center;flex-direction: column;align-items: center;">
+            <button id="submit" style="width: 400px;font-size: 17px;font-weight:600; text-transform:uppercase;background-color:rgb(13, 65, 235);color: #fff;border: none;outline: none;padding: 10px 20px;border-radius: 9999px;text-align: center;">
+                Submit data
+            </button>
         </div>
     </div>
-    <div style="margin-top: 20px;display: flex;justify-content: center;flex-direction: column;align-items: center;">
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                First name: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                Last name: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                Title: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                Del No.: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                State: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                City: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
-        <div style="display: flex;justify-content: space-between;margin-bottom: 30px;align-items: center;">
-            <div style="font-weight: 600;margin-right: 40px;width: 120px;">
-                Street Address: 
-            </div>
-            <input  type="text" style="border: none;font-weight: 500;font-size: 17px; width: 400px;padding: 10px 15px;background-color: rgb(243, 243, 243);outline: none;border-radius: 8px;" />
-        </div>
+    <div id="retrieve" style="margin-top: 20px;display: none;justify-content: center;flex-direction: column;align-items: center;">
 
     </div>
+    <div id="backup" style="margin-top: 20px;display: none;justify-content: center;flex-direction: column;align-items: center;">
+        <h2>Backing up. Pleass wait...</h2>
+    </div>
+
+    <div id="submit-overlay" style="position: fixed;top: 0;bottom: 0;right: 0;left: 0;display: none;align-items: center;flex-direction: column;justify-content: center;background-color: rgba(0,0,0,0.6);">
+        <div style="font-size: 18px;background-color: #fff;border-radius: 20px;width: 400px;height: 200px;display: flex;align-items: center;flex-direction: column;justify-content: center;">
+            Submitting data. Please wait...
+        </div>
+    </div>
+    <script>
+        const selector = document.getElementById('select');
+        const forms = {
+            course: document.getElementById('course'),
+            delegate: document.getElementById('delegate')
+        }
+        const submitButton = document.getElementById('submit');
+        const delegateInputs = Object.values(forms.delegate.getElementsByTagName('input'));
+        const courseInputs = Object.values(forms.course.getElementsByTagName('input'));
+        courseInputs.push(forms.course.getElementsByTagName('textarea')[0]);
+
+        const clearDelegateInputs = ()=>delegateInputs.forEach(input=>input.value='');
+        const clearCourseInputs = ()=>courseInputs.forEach(input=>input.value='')
+
+        const submitOverlay = document.getElementById('submit-overlay');
+        submitButton.addEventListener('click',()=>{
+            submitOverlay.style.display = 'flex';
+            const type = (selector.value || currentManipulationType).toLowerCase();
+            let inputs = delegateInputs;
+            if(type==='course'){
+                inputs = courseInputs;
+            }
+            const body = {table: type, command: navButtonNames[currentSelectedButton], data: {}}
+            inputs.forEach(input=>{
+                body.data[input.name] = input.value;
+            });
+
+           
+            fetch(`${window.location.origin}/data`,{
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {'Content-Type':'application/json'}
+            })
+            .then((response)=>{
+                if(response.ok){
+                    submitOverlay.style.display = 'none';
+                    clearCourseInputs();
+                    clearDelegateInputs();
+                }else{
+                    alert('An error occured');
+                    submitOverlay.style.display = 'none';
+                }
+            })
+            .catch((err)=>{
+                alert('An error occured');
+                submitOverlay.style.display = 'none';
+            })
+            
+        });
+        let currentManipulationType = 'delegate';
+        selector.addEventListener('change',(e)=>{
+            const value = e.target.value.toLowerCase();
+            forms[value==='course'?'delegate':'course'].style.display='none';
+            forms[value].style.display='flex';
+            currentManipulationType = value;
+        })
+
+        const firstSect = document.getElementById('first-set');
+        const retrieveSpace = document.getElementById('retrieve');
+        const backupSpace = document.getElementById('backup');
+
+        
+        let currentSelectedButton = 0;
+        const buttonsActions = {
+            0: /* Insert */ ()=>{
+                if(currentSelectedButton!==0){
+                    navButtons[currentSelectedButton].style.backgroundColor='';
+                    navButtons[currentSelectedButton].style.color = '';
+                    currentSelectedButton = 0;
+                    navButtons[currentSelectedButton].style.backgroundColor='rgb(13, 65, 235)';
+                    navButtons[currentSelectedButton].style.color = '#fff';
+
+                    firstSect.style.display = 'block'
+                    retrieveSpace.style.display = 'none'
+                    backupSpace.style.display = 'none'
+                }
+            },
+            1: /* Update */ ()=>{
+                if(currentSelectedButton!==1){
+                    navButtons[currentSelectedButton].style.backgroundColor='';
+                    navButtons[currentSelectedButton].style.color = '';
+                    currentSelectedButton = 1;
+                    navButtons[currentSelectedButton].style.backgroundColor='rgb(13, 65, 235)';
+                    navButtons[currentSelectedButton].style.color = '#fff';
+
+                    firstSect.style.display = 'block'
+                    retrieveSpace.style.display = 'none'
+                    backupSpace.style.display = 'none'
+                }
+            },
+            2: /* Retrieve */ ()=>{
+                if(currentSelectedButton!==2){
+                    navButtons[currentSelectedButton].style.backgroundColor='';
+                    navButtons[currentSelectedButton].style.color = '';
+                    currentSelectedButton = 2;
+                    navButtons[currentSelectedButton].style.backgroundColor='rgb(13, 65, 235)';
+                    navButtons[currentSelectedButton].style.color = '#fff';
+
+                    firstSect.style.display = 'block'
+                    retrieveSpace.style.display = 'none'
+                    backupSpace.style.display = 'none'
+                }
+            },
+            3: /* Delete */ ()=>{
+                if(currentSelectedButton!==3){
+                    navButtons[currentSelectedButton].style.backgroundColor='';
+                    navButtons[currentSelectedButton].style.color = '';
+                    currentSelectedButton = 3;
+                    navButtons[currentSelectedButton].style.backgroundColor='rgb(13, 65, 235)';
+                    navButtons[currentSelectedButton].style.color = '#fff';
+
+                    firstSect.style.display = 'none'
+                    retrieveSpace.style.display = 'flex'
+                    backupSpace.style.display = 'none'
+                }
+            },
+            4: /* Backup */ ()=>{
+                if(currentSelectedButton!==4){
+                    navButtons[currentSelectedButton].style.backgroundColor='';
+                    navButtons[currentSelectedButton].style.color = '';
+                    currentSelectedButton = 4;
+                    navButtons[currentSelectedButton].style.backgroundColor='rgb(13, 65, 235)';
+                    navButtons[currentSelectedButton].style.color = '#fff';
+
+                    firstSect.style.display = 'none'
+                    retrieveSpace.style.display = 'none'
+                    backupSpace.style.display = 'flex';
+
+                    fetch(`${window.location.origin}/backup`);
+                }
+            },
+        }
+
+        const navButtonNames = ['insert', 'update', 'delete', 'retrieve', 'backup'];
+        const navButtons = Object.values(document.getElementById('nav-button-container').getElementsByTagName('button'));
+        navButtons.forEach((button, index)=>{
+            button.addEventListener('click',(e)=>{
+                clearCourseInputs();
+                clearDelegateInputs();
+                buttonsActions[index](e);
+
+            })
+        })
+    </script>
 </body>
 </html>
