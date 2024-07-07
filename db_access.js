@@ -20,7 +20,7 @@ async function manipulateDB({command, table, data}){
 
     switch (command) {
         case 'insert':
-            values = Object.values(data).join(', ');
+            values = Object.values(data).map((v)=>JSON.stringify(`'${v}'`)).join(', ');
             // Insert row
             sql = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${values});`;
             console.log(sql);
@@ -32,7 +32,7 @@ async function manipulateDB({command, table, data}){
             values = [];
             for(i=0; i<columns.length; i++){
                 if(data[columns[i]]){
-                    values.push(`(${columns[i]}=${data[columns[i]]})`)
+                    values.push(`(${columns[i]}='${data[columns[i]]}')`)
                 }
             }
             // Delete row
@@ -46,7 +46,7 @@ async function manipulateDB({command, table, data}){
             values = [];
             for(i=0; i<columns.length; i++){
                 if(data[columns[i]]){
-                    values.push(`${columns[i]}=${data[columns[i]]}`)
+                    values.push(`${columns[i]}='${data[columns[i]]}'`)
                 }
             }
             // Update row
