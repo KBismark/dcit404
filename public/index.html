@@ -18,7 +18,7 @@
         }
         .table-row{
             display: flex;
-            
+            border-left: 1px solid #d8d8d8;border-bottom: 1px solid #d8d8d8;
         }
         .table-row span{
             width: 120px;
@@ -194,9 +194,9 @@
         </div>
     </div>
     <div id="retrieve" style="margin-top: 20px;display: none;justify-content: center;flex-direction: column;align-items: center;">
-        <div>
+        <div style="margin-bottom: 15%;">
             <h1>Delegate Table</h1>
-            <div class="table-row table-head" style="border-radius: 15px 15px 0px 0px;display: flex;">
+            <div class="table-row table-head" style="border-radius: 15px 15px 0px 0px;display: flex;border-left: 1px solid #d8d8d8;">
                 <span>delegateFName</span>
                 <span>delegateLName</span>
                 <span>delegateTitle</span>
@@ -210,19 +210,20 @@
                 <span>employeeName</span>
             </div>
             <div id="del"></div>
-            <div class="table-row" style="border-radius: 15px 15px 0px 0px;display: flex;">
-                <span>delegateFName</span>
-                <span>delegateLName</span>
-                <span>delegateTitle</span>
-                <span>delegateNo</span>
-                <span>attEmailAddress</span>
-                <span>attTelNo</span>
-                <span>delegateState</span>
-                <span>delegateCity</span>
-                <span>delegateStreet</span>
-                <span>clientNo</span>
+        </div>
+        <div style="margin-bottom: 15%;">
+            <h1>Course Table</h1>
+            <div class="table-row table-head" style="border-radius: 15px 15px 0px 0px;display: flex;border-left: 1px solid #d8d8d8;">
+                <span>courseName</span>
+                <span>startDate</span>
+                <span>startTime</span>
+                <span>endDate</span>
+                <span>endTime</span>
+                <span>courseNo</span>
                 <span>employeeName</span>
+                <span style="width: 300px;">courseDescription</span>
             </div>
+            <div id="cour"></div>
         </div>
     </div>
     <div id="backup" style="margin-top: 20px;display: none;justify-content: center;flex-direction: column;align-items: center;">
@@ -365,7 +366,7 @@
                                 console.log(data);
                                 const delegatetable = data.delegate;
                                 const div = document.createElement('div');
-                                const del = document.getElementById('del')
+                                const del = document.getElementById('del');
                                 delegatetable.forEach((row)=>{
                                     const html = `<div class="table-row" style="border-radius: 15px 15px 0px 0px;display: flex;">
                                         <span>${row.delegateFName}</span>
@@ -382,13 +383,33 @@
                                     </div>`;
                                     
                                     div.innerHTML = html;
-                                    del.parentElement.insertBefore(del,div.firstElementChild)
+                                    del.parentElement.insertBefore(div.firstElementChild, del)
+                                });
+
+                                const cour = document.getElementById('cour');
+                                const courseTable = data.course;
+                                courseTable.forEach((row)=>{
+                                    const html = `<div class="table-row" style="border-radius: 15px 15px 0px 0px;display: flex;">
+                                        <span>${row.courseName}</span>
+                                        <span>${row.startDate}</span>
+                                        <span>${row.startTime}</span>
+                                        <span>${row.endDate}</span>
+                                        <span>${row.endTime}</span>
+                                        <span>${row.courseNo}</span>
+                                        <span>${row.employeeName}</span>
+                                        <span style="width: 300px;">${row.courseDescription}</span>
+                                    </div>`;
+                                    
+                                    div.innerHTML = html;
+                                    cour.parentElement.insertBefore(div.firstElementChild, del)
                                 })
+
                                 submitOverlay.style.display = 'none';
                                 submitOverlay.firstElementChild.textContent = content;
                             })
                             .catch((err)=>{
                                 alert('An error occured');
+                                console.log(err);
                                 submitOverlay.style.display = 'none';
                                 submitOverlay.firstElementChild.textContent = content;
                             })
