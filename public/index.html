@@ -346,8 +346,20 @@
                     .then((response)=>{
                         if(response.ok){
                            
-                            submitOverlay.style.display = 'none';
-                            submitOverlay.firstElementChild.textContent = content;
+                            response.json()
+                            .then((data)=>{
+                                console.log(data);
+                                submitOverlay.style.display = 'none';
+                                submitOverlay.firstElementChild.textContent = content;
+                            })
+                            .catch((err)=>{
+                                alert('An error occured');
+                                submitOverlay.style.display = 'none';
+                                submitOverlay.firstElementChild.textContent = content;
+                            })
+                            
+                            // submitOverlay.style.display = 'none';
+                            // submitOverlay.firstElementChild.textContent = content;
                            
                         }else{
                             alert('An error occured');

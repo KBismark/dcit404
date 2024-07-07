@@ -82,13 +82,9 @@ async function manipulateDB({command, table, data}){
             await connection.close();
         } catch (err) {
             console.log(err);
-            return await fallBack({command, table, data})
+            // return await fallBack({command, table, data})
             // throw err;
         }
-    }else{
-        console.log(new Error('Error!'));
-        return await fallBack({command, table, data})
-        // throw new Error('Error!')
     }
   }
     
@@ -115,7 +111,7 @@ async function fallBack({command, table, data}){
             result = await fs.readFile(sample_db_path,'utf8');
             result = JSON.parse(result);
             result[table].push(data);
-            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2))
+            await fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2))
             break;
         case 'delete':
             result = await fs.readFile(sample_db_path,'utf8');
@@ -138,7 +134,7 @@ async function fallBack({command, table, data}){
                     break;
                 }
             }
-            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
+            await fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
             break;
         case 'update':
             values = {};
@@ -167,7 +163,7 @@ async function fallBack({command, table, data}){
                     break;
                 }
             }
-            fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
+            await fs.writeFile(sample_db_path, JSON.stringify(result, undefined, 2));
             break;
         case 'retrieve':
             result = await fs.readFile(sample_db_path,'utf8');

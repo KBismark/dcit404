@@ -1,4 +1,18 @@
 {
-    "delegate": [],
-    "course": []
+  "delegate": [
+    {
+      "delegateFName": "Bismark",
+      "delegateLName": "Yamoah",
+      "delegateTitle": "Mr",
+      "delegateNo": "3456767",
+      "attEmailAddress": "Rt@d.com",
+      "attTelNo": "0594391706",
+      "delegateState": "Greater Accra",
+      "delegateCity": "Tuba, Kasoa",
+      "delegateStreet": "Tuba Road, Kasoa",
+      "clientNo": "4556788",
+      "employeeName": "Nana"
+    }
+  ],
+  "course": []
 }
