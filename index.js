@@ -33,7 +33,14 @@ app.post('/data', async (req,res)=>{
 app.get('/data', async (req,res)=>{
     console.log(req.body);
     let success = false;
-   
+    let result;
+    try {
+        result = await manipulateDB({command: 'retrieve', data: {}, table: ''})
+        success = true;
+    } catch (error) {
+        success = false;
+        console.log(error);
+    }
     if(success) { 
         return res.status(200).json({});
     }

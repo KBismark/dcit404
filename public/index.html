@@ -282,7 +282,7 @@
                     backupSpace.style.display = 'none'
                 }
             },
-            2: /* Retrieve */ ()=>{
+            2: /* Delete */ ()=>{
                 if(currentSelectedButton!==2){
                     navButtons[currentSelectedButton].style.backgroundColor='';
                     navButtons[currentSelectedButton].style.color = '';
@@ -293,9 +293,10 @@
                     firstSect.style.display = 'block'
                     retrieveSpace.style.display = 'none'
                     backupSpace.style.display = 'none'
+                    
                 }
             },
-            3: /* Delete */ ()=>{
+            3: /* Retrieve */ ()=>{
                 if(currentSelectedButton!==3){
                     navButtons[currentSelectedButton].style.backgroundColor='';
                     navButtons[currentSelectedButton].style.color = '';
@@ -306,6 +307,31 @@
                     firstSect.style.display = 'none'
                     retrieveSpace.style.display = 'flex'
                     backupSpace.style.display = 'none'
+
+                    const content = 'Submitting data. Please wait...'
+                    submitOverlay.firstElementChild.textContent = 'Retrieving data. Please wait...';
+                    submitOverlay.style.display = 'flex';
+
+                    fetch(`${window.location.origin}/data`,{
+                        method: 'GET'
+                    })
+                    .then((response)=>{
+                        if(response.ok){
+                           
+                            submitOverlay.style.display = 'none';
+                            submitOverlay.firstElementChild.textContent = content;
+                           
+                        }else{
+                            alert('An error occured');
+                            submitOverlay.style.display = 'none';
+                            submitOverlay.firstElementChild.textContent = content;
+                        }
+                    })
+                    .catch((err)=>{
+                        alert('An error occured');
+                        submitOverlay.style.display = 'none';
+                        submitOverlay.firstElementChild.textContent = content;
+                    })
                 }
             },
             4: /* Backup */ ()=>{
