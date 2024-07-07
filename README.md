@@ -3,8 +3,8 @@ A simple implementaion of PL/SQL using HTM/CSS/JS for user interface and Nodejs 
 
 ## Group Members' names and student IDs
 - Bismark Yamoah - 10900095
-- name - id
-- name - id
+- Quagraine Augustine PaaSam - 10909098
+- Abdul-Salam Hudu - 10892303
 
 ## How to run this application
 - Clone this repo
