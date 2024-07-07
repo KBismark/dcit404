@@ -32,7 +32,7 @@ async function manipulateDB({command, table, data}){
             values = [];
             for(i=0; i<columns.length; i++){
                 if(data[columns[i]]){
-                    values.push(`(${columns[i]}='${data[columns[i]]}')`)
+                    values.push(`(${columns[i]}=${JSON.stringify(`'${data[columns[i]]}'`)})`)
                 }
             }
             // Delete row
@@ -46,7 +46,7 @@ async function manipulateDB({command, table, data}){
             values = [];
             for(i=0; i<columns.length; i++){
                 if(data[columns[i]]){
-                    values.push(`${columns[i]}='${data[columns[i]]}'`)
+                    values.push(`${columns[i]}=${JSON.stringify(`'${data[columns[i]]}'`)}`)
                 }
             }
             // Update row
