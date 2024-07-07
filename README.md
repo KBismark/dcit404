@@ -14,3 +14,19 @@ A simple implementaion of PL/SQL using HTM/CSS/JS for user interface and Nodejs 
 - Finally, open http:localhost:3004/ in the browser to access the user interface
 
 ## Demostration Images
+> ![Delegate Information form](./demo/shot4.png)    
+
+> ![Course Information form](./demo/shot5.png) 
+
+> ![Submission Button](./demo/shot2.png) 
+
+> ![Data Submission](./demo/shot1.png) 
+
+> ![Backup](./demo/shot3.png) 
+
+> ![Delegate Table](./demo/shot6.png) 
+
+> ![Tables](./demo/shot8.png)    
+
+> ![Course Table](./demo/shot7.png)     
+

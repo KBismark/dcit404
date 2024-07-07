@@ -12,7 +12,87 @@
       "delegateStreet": "Tuba Road, Kasoa",
       "clientNo": "4556788",
       "employeeName": "Nana"
+    },
+    {
+      "delegateFName": "Emmanuel",
+      "delegateLName": "Ansah",
+      "delegateTitle": "Mr",
+      "delegateNo": "547464654",
+      "attEmailAddress": "emma@gmail.com",
+      "attTelNo": "0246109834",
+      "delegateState": "Kumasi",
+      "delegateCity": "Dubai Area",
+      "delegateStreet": "Dubai Market Women, Lane 2",
+      "clientNo": "5434748585",
+      "employeeName": "Nana"
+    },
+    {
+      "delegateFName": "Jessica",
+      "delegateLName": "Osei-Adu",
+      "delegateTitle": "Miss",
+      "delegateNo": "937363334",
+      "attEmailAddress": "jessica.oadu@gmail.com",
+      "attTelNo": "05498787625",
+      "delegateState": "Eastern Region",
+      "delegateCity": "Kade",
+      "delegateStreet": "Asasi Junction",
+      "clientNo": "93083653",
+      "employeeName": "Nana"
+    },
+    {
+      "delegateFName": "John",
+      "delegateLName": "Doe",
+      "delegateTitle": "Master",
+      "delegateNo": "537444",
+      "attEmailAddress": "jdoe@gmail.com",
+      "attTelNo": "0244846724",
+      "delegateState": "Central Region",
+      "delegateCity": "Elmina",
+      "delegateStreet": "Mangoase, RT lane",
+      "clientNo": "74947345",
+      "employeeName": "Nana"
     }
   ],
-  "course": []
+  "course": [
+    {
+      "courseName": "Mathematics",
+      "startDate": "2024-07-17",
+      "startTime": "08:00",
+      "endDate": "2024-11-17",
+      "endTime": "19:00",
+      "courseNo": "1000001",
+      "employeeName": "Twumasi Ankrah",
+      "courseDescription": "Mathematics course for all levels"
+    },
+    {
+      "courseName": "Science",
+      "startDate": "2024-06-01",
+      "startTime": "09:00",
+      "endDate": "2024-08-07",
+      "endTime": "20:01",
+      "courseNo": "1000002",
+      "employeeName": "Twumasi Ankrah",
+      "courseDescription": "English course for all levels"
+    },
+    {
+      "courseName": "Trading",
+      "startDate": "2024-07-15",
+      "startTime": "07:00",
+      "endDate": "2024-12-07",
+      "endTime": "19:55",
+      "courseNo": "1000003",
+      "employeeName": "Twumasi Ankrah",
+      "courseDescription": "Learn a trading course today!"
+    },
+    {
+      "courseName": "Risk management",
+      "startDate": "2024-07-20",
+      "startTime": "09:00",
+      "endDate": "2024-10-30",
+      "endTime": "21:00",
+      "courseNo": "1000004",
+      "employeeName": "Twumasi Ankrah",
+      "courseDescription": "Upgrade your understanding of risk management through this course"
+    }
+  ]
 }
