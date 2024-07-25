@@ -8,9 +8,6 @@ const port = 3004;
 app.use('/',express.static(path.join(__dirname, '/public')));
 app.use(express.json({})) // bodyParser({extended: true})
 
-app.get('/',(req,res)=>{
-    console.log(req.url);
-})
 
 app.post('/data', async (req,res)=>{
     console.log(req.body);

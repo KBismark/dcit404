@@ -2,9 +2,9 @@ const oracledb = require('oracledb');
 const fs = require('fs/promises');
 const path = require('path');
 
-const USER = 'dcit404';
-const PASSWORD = '1234';
-const CONNECTION_STRING = 'localhost/xepdb1';
+const USER = process.env.USER;
+const PASSWORD = process.env.PASSWORD;
+const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 const connectionConfig = { user: USER, password: PASSWORD, connectionString: CONNECTION_STRING };
 
