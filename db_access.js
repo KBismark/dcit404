@@ -26,7 +26,11 @@ async function manipulateDB({command, table, data}){
             // Insert row
             sql = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${values});`;
             console.log(sql);
-            result = await connection.execute(sql);
+            result = await connection.execute(`
+            BEGIN
+            ${sql}
+            END;
+            `);
             console.log(result);
             connection.commit();
             break;
@@ -40,7 +44,11 @@ async function manipulateDB({command, table, data}){
             // Delete row
             sql = `DELETE FROM ${table} WHERE ${values.join(' AND ')};`;
             console.log(sql);
-            result = await connection.execute(sql);
+            result = await connection.execute(`
+            BEGIN
+            ${sql}
+            END;
+            `);
             console.log(result);
             connection.commit();
             break;
@@ -54,14 +62,26 @@ async function manipulateDB({command, table, data}){
             // Update row
             sql = `UPDATE ${table} SET ${values.join(', ')} WHERE ${values.join(' OR ')};`;
             console.log(sql);
-            result = await connection.execute(sql);
+            result = await connection.execute(`
+            BEGIN
+            ${sql}
+            END;
+            `);
             console.log(result);
             connection.commit();
             break;
         case 'retrieve':
             result = [
-                await connection.execute(`SELECT * FROM course;`), 
-                await connection.execute(`SELECT * FROM delegate;`), 
+                await connection.execute(`
+                BEGIN
+                SELECT * FROM course;
+                END;
+                `), 
+                await connection.execute(`
+                BEGIN
+                SELECT * FROM delegate;
+                END;
+                `) 
             ];
             console.log(result);
             break;
